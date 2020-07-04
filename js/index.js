@@ -1,13 +1,11 @@
 
 
 (function () {
-
-
   let selectObj = {
     curCityNode: document.querySelector('.curCity'),
     provinceNode: document.querySelector('.province'),
     cityNode: document.querySelector('.city'),
-    selectName:document.querySelector('.selectName'),
+    selectName: document.querySelector('.selectName'),
     province: ["北京市", "重庆市", "福建省", "江苏省", "广东省", "辽宁省", "内蒙古", "山西省", "青海省", "四川省", "贵州省", "云南省", "陕西省", "西藏", "宁夏", "新疆", "广西", "海南省", "湖南省", "湖北省", "河南省", "山东省", "江西省", "安徽省", "浙江省", "上海市", "黑龙江省", "吉林省", "甘肃省", "天津市", "河北省"],
     city: {
       "28": [["000", "张掖市"], ["001", "武威市"], ["002", "天水市"], ["003", "庆阳市"], ["004", "平凉市"], ["005", "陇南市"], ["006", "临夏州"], ["007", "兰州市"], ["008", "酒泉市"], ["009", "金昌市"], ["010", "嘉峪关市"], ["011", "甘南藏族自治州"], ["012", "定西市"], ["013", "白银市"]],
@@ -50,8 +48,7 @@
     renderList(dom, listArr) {
       let html = ``;
       let listHtml = listArr.reduce((prev, element, index) => {
-
-        return prev += `<li data-value='${typeof element === 'string' ? index:element[0]}'>${typeof element === 'string'?element : element[1]}</li>`
+        return prev += `<li data-value='${typeof element === 'string' ? index : element[0]}'>${typeof element === 'string' ? element : element[1]}</li>`
       }, html);
       dom.innerHTML = listHtml;
     },
@@ -60,60 +57,44 @@
       return this.city[provNum];
     },
 
-    getCheckedData(event){
-      console.log(event);
+    getCheckedData(event) {
       const cityArr = this.cityNode.getElementsByTagName('li');
-     
-       let data =  event?event.innerText:cityArr[0].innerText;
-       
+      let data = event ? event.innerText : cityArr[0].innerText;
       this.selectName.innerText = data;
       this.curCityNode.onclick();
     },
+
     bindEvent() {
-
       let self = this;
-
-      this.curCityNode.onclick = function(){
-        if(this.classList.contains('active')){
+      this.curCityNode.onclick = function () {
+        if (this.classList.contains('active')) {
           this.classList.remove('active');
           self.cityNode.style.display = 'none';
-
-        }else{
+        } else {
           this.classList.add('active');
         }
-        
       }
 
 
       // mouseover
       this.provinceNode.onmouseover = function (e) {
         let target = e.target;
-
         if (target.nodeName == 'LI') {
           let val = target.dataset.value;
-
           self.renderList(self.cityNode, self.getCityArr(val));
           self.cityNode.style.display = 'block';
         }
-
       }
 
       this.provinceNode.onclick = function (e) {
-        
         self.getCheckedData();
       }
 
-      this.cityNode.onclick = function(e){
+      this.cityNode.onclick = function (e) {
         let target = e.target;
         self.getCheckedData(target);
       }
-      //
-
     }
-
-
   }
-
-
   selectObj.init()
 }())
