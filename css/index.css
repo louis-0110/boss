@@ -1,0 +1,147 @@
+body{
+  margin:0;
+  background-color: aliceblue;
+}
+
+ul{
+  padding:0;
+  margin:0;
+  list-style: none;
+  /* display: none; */
+}
+@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_1922422_dinrh4grvtq.eot?t=1593790771999'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1922422_dinrh4grvtq.eot?t=1593790771999#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAJ4AAsAAAAABiwAAAItAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcAo4UQE2AiQDCAsGAAQgBYRtBy8bdgURBaTJfhzkpsk7isbkhdU3oWrsezx8P/d2bvLymxKqdokVEqjOjgcAYdgCuSqxSHr139q0w2FUhGFKzoPvUrCbwM5fPl1WVZlWyArZPCkh8Yl7p38FFMh8QDnuRWNNmjSAujigAMdaFFkJZdwwdsELPE6gTj9jxPyFy9crJfa4QBw/cmiPsuCVJJYohUrD0iRuKpTZpeyDG9H345+xUZIpcnbJ6oML9pv9k5OSn6yetD0g+AhodYEcY5CI9Y3RlXLB2Lm6aDKIYxUGP1WrgUUc1SjYX2fnN4BuGAt+8sYKkMFjiQY2t0y6hmjY1PzkxSi6f7nj+vTZg4dvv8ydtG3b+977/klzzUY/y29lmUDQ9+PfmV3N0/+X9Qm8u3dcZEh0O+XKtuAniAc2JENqm7OkiRvbMw07L6tThyrsbPNxqq7zjMlQ6pxgr9GTIVcaQibWGBTqjUdFaRbqjLZodb12vXKRajHKOYDgtHgj06QPuRZfMrF+KHT5o6Il9qizMdq3rDcsBmeeYK14heYFQ8sruVZ14sIDdre5lrw04lxQ7BCA0AvKiRRXlCVm2HsXqRKQ8AIJOA3nmcEIj9iq16ua2Pep6U1ey8vGMY9ANYWuQOMFDFpsRUFn5VQ+f4A6N7OadNTVhS+QsIbeQcgTDCBT1Tqo7lFese46EaUIIIItQAIGodmMAdM8aIRaytNPCBsx32lFQ1Xe9prl73ZBHVufhdMnV5xg49rNBgA=') format('woff2'),
+  url('//at.alicdn.com/t/font_1922422_dinrh4grvtq.woff?t=1593790771999') format('woff'),
+  url('//at.alicdn.com/t/font_1922422_dinrh4grvtq.ttf?t=1593790771999') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1922422_dinrh4grvtq.svg?t=1593790771999#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+
+.container{
+  width: 400px;
+  height: 40px;
+  margin:200px auto 0;
+  border:1px solid #eee;
+  box-shadow: 2px 2px 10px 0px #aaa;
+}
+
+.container .selectWrap{
+  width:100px;
+  height: 100%;
+  position: relative;
+}
+
+ .selectWrap .curCity p{
+  display: inline-block;
+  margin:0;
+  font-size: 13px;
+  width: 65%;
+  padding-left:10px;
+  line-height: 40px;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selectWrap .curCity i{
+  font-family: "iconfont" !important;
+  display: inline-block;
+  height: 40px;
+  /* margin-left: 10px; */
+  line-height: 40px;
+  text-align: center;
+  transition: all .3s;
+  vertical-align: top;
+}
+
+.selectWrap .curCity.active i{
+  transform: rotate(180deg);  
+}
+
+
+
+.selectWrap .curCity span{
+  position: absolute;
+  right: 0;
+  top:0;
+  width: 2px;
+  height: 40px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 5px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-color: aliceblue;
+  border-bottom-color: aliceblue ;
+  /* border-color: transparent; */
+  /* background-color: #ccc; */
+
+  background-image:linear-gradient( 0deg,#fff , #aaa,#fff);
+}
+
+.province ,.city{
+  position: absolute;
+  border:1px solid #ccc;
+  width: 120px;
+  max-height: 220px;
+  overflow-y: auto;
+  box-shadow: 0px 0px 5px 1px #eee;
+
+}
+
+.province {
+  top:50px;
+  left: 0px;
+}
+
+.city{
+  top:50px;
+  left: 126px;
+  display: none;
+}
+
+.curCity + ul.province{
+  display: none;
+}
+
+.curCity.active + ul.province{
+  display: block;
+}
+
+ul > li{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 40px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+ul > li:hover{
+  background-color: rgba(13, 156, 192, 0.712);
+  color:#fff;
+}
+
+
+
+
+
+.searchWrap {
+  float:right;
+  width: 74%;
+  height: 100%;
+  padding:5px;
+  box-sizing: border-box;
+}
+
+.searchWrap input{
+  width:100%;
+  height: 100%;
+  background-color: transparent;
+  border:1px solid #ccc;
+  outline: none;
+}
